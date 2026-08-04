@@ -3,6 +3,17 @@
 NestJS REST API for drone inventory, mission execution, maintenance tracking, dashboard data,
 and fleet-health reporting.
 
+## Full-stack Docker setup
+
+For the complete Docker Compose environment and one-command local setup, see the
+[SkyOps Mission Control umbrella repository](https://github.com/melihbasturk/skyops-mission-control).
+
+## Live deployment
+
+- Backend API: https://skyops-mission-control-backend.onrender.com/api/v1
+- Health check: https://skyops-mission-control-backend.onrender.com/health
+- Frontend: https://skyops-mission-control-frontend.onrender.com
+
 ## Prerequisites
 
 - Node.js 20 or newer
