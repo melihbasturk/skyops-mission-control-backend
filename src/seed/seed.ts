@@ -51,7 +51,7 @@ function buildMissions(): Mission[] {
     rows.push(row);
   }
   for (let i = 28; i < 52; i++) {
-    const row = base(i, MissionStatus.COMPLETED, i % 20, -(i - 20));
+    const row = base(i, MissionStatus.COMPLETED, i % 20, -(i - 27));
     row.actualStartAt = row.plannedStartAt;
     row.actualEndAt = new Date(row.plannedStartAt!.getTime() + 90 * 60_000);
     row.terminalAt = row.actualEndAt;
@@ -59,7 +59,7 @@ function buildMissions(): Mission[] {
     rows.push(row);
   }
   for (let i = 52; i < 60; i++) {
-    const row = base(i, MissionStatus.ABORTED, i % 20, -(i - 45));
+    const row = base(i, MissionStatus.ABORTED, i % 20, -(i - 51));
     row.abortReason = i % 2 === 0 ? 'Weather conditions exceeded safe limits.' : 'Equipment check required.';
     row.terminalAt = new Date(row.plannedStartAt!.getTime() + 30 * 60_000);
     if (i >= 56) {
@@ -85,6 +85,7 @@ function buildDrones(missions: Mission[]): Drone[] {
     let lastMaintenanceDate = dateOnly(-30);
     let baseline = total - Math.min(20, 5 + missionHours);
 
+    if (index < 3) lastMaintenanceDate = dateOnly(-84 - index);
     if (index >= 10 && index < 12) status = DroneStatus.IN_MISSION;
     if (index >= 12 && index < 20) {
       status = DroneStatus.MAINTENANCE;
